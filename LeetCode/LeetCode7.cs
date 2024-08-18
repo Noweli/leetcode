@@ -1,7 +1,7 @@
 ﻿namespace LeetCode;
 
-public class Solution7 {
-    public int Reverse(int x) {
+public static class LeetCode7 {
+    public static int Reverse(int x) {
         var isNegative = x < 0;
 
         var reversed = x.ToString().Reverse().ToList();
