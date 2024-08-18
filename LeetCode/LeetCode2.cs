@@ -5,7 +5,7 @@ namespace LeetCode;
 
 public static class LeetCode2
 {
-    public static ListNode AddTwoNumbers(ListNode l1, ListNode l2)
+    public static SharedModels.ListNode AddTwoNumbers(SharedModels.ListNode l1, SharedModels.ListNode l2)
     {
         var node1 = ReverseString(GetListNodeAsString(l1));
         var node2 = ReverseString(GetListNodeAsString(l2));
@@ -14,7 +14,7 @@ public static class LeetCode2
         return ConvertStringToListNode(sum);
     }
 
-    private static string GetListNodeAsString(ListNode list)
+    private static string GetListNodeAsString(SharedModels.ListNode list)
     {
         var builder = new StringBuilder();
         builder.Append(list.val);
@@ -27,15 +27,15 @@ public static class LeetCode2
         return builder.ToString();
     }
 
-    private static ListNode ConvertStringToListNode(string input)
+    private static SharedModels.ListNode ConvertStringToListNode(string input)
     {
         var inputAsArray = ReverseString(input).ToArray().Select(v => v - '0').ToArray();
 
-        var first = new ListNode(inputAsArray[0]);
+        var first = new SharedModels.ListNode(inputAsArray[0]);
         var previous = first;
         for (var i = 1; i < inputAsArray.Length; i++)
         {
-            var current = new ListNode(inputAsArray[i]);
+            var current = new SharedModels.ListNode(inputAsArray[i]);
             previous.next = current;
             previous = current;
         }
@@ -49,14 +49,3 @@ public static class LeetCode2
         BigInteger.Add(BigInteger.Parse(str1), BigInteger.Parse(str2));
 }
 
-public class ListNode
-{
-    public int val;
-    public ListNode? next;
-
-    public ListNode(int val = 0, ListNode? next = null)
-    {
-        this.val = val;
-        this.next = next;
-    }
-}

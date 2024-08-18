@@ -1,4 +1,5 @@
 ﻿using FluentAssertions;
+using LeetCode.Tests.Helpers;
 
 namespace LeetCode.Tests;
 
@@ -11,49 +12,16 @@ public class LeetCode2Tests
     public void AddTwoNumbers_ReturnExpected(int[] l1Values, int[] l2Values, int[] expected)
     {
         // Arrange
-        var l1 = CreateListNodeWithValues(l1Values);
-        var l2 = CreateListNodeWithValues(l2Values);
+        var l1 = ListNodeHelpers.CreateListNodeWithValues(l1Values);
+        var l2 = ListNodeHelpers.CreateListNodeWithValues(l2Values);
 
         // Act
         var solutionResult = LeetCode2.AddTwoNumbers(l1, l2);
-        var result = ReadListNode(solutionResult);
+        var result = ListNodeHelpers.ReadListNode(solutionResult);
 
         // Assert
         result.Should().BeEquivalentTo(expected);
     }
 
-    private static int[] ReadListNode(ListNode listNode)
-    {
-        List<int> output = [listNode.val];
-
-        if (listNode.next is not null)
-        {
-            output.AddRange(ReadListNode(listNode.next));
-        }
-
-        return output.ToArray();
-    }
-
-    private static ListNode CreateListNodeWithValues(int[] values)
-    {
-        if (values.Length == 1)
-        {
-            return new ListNode(values[0]);
-        }
-
-        var root = new ListNode
-        {
-            val = values[0]
-        };
-
-        var current = root;
-        foreach (var value in values.Skip(1))
-        {
-            var newNode = new ListNode(value);
-            current.next = newNode;
-            current = newNode;
-        }
-
-        return root;
-    }
+    
 }
