@@ -1,3 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using BenchmarkDotNet.Running;
+using LeetCode.Benchmarks;
 
-Console.WriteLine("Hello, World!");
+_ = BenchmarkRunner.Run(typeof(LeetCode3190Benchmarks));
