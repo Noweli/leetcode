@@ -5,7 +5,7 @@ namespace LeetCode.Benchmarks;
 [MemoryDiagnoser]
 public class LeetCode3190Benchmarks
 {
-    private int[] _inputIntegers = Enumerable.Range(1, 50_000_000).ToArray();
+    private readonly int[] _inputIntegers = Enumerable.Range(1, 50_000_000).ToArray();
     
     [Benchmark(Baseline = true)]
     public int Count()
